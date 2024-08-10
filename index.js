@@ -12,6 +12,7 @@ console.log(`server is running on port ${port}`);
 
 app.use(express.json());
 
+//Syncing all models
 sequelize.sync({force:false}).then(()=>{
  console.log('All models were syncronized successfully');
     
