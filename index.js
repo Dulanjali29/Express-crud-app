@@ -46,3 +46,13 @@ app.put('/users/:id',async(req,res)=>{
     }
    
 });
+//  delete user by id
+app.delete('/users/:id',async(req,res)=>{
+    const user=await User.findByPk(req.params.id);
+     if(user){
+        await user.destroy();
+        res.status(204).send('User Deleted Successfully');
+     }else{
+        res.status(404).send('User not found !');
+     }
+    });
