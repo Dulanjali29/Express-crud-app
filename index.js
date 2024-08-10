@@ -19,3 +19,9 @@ sequelize.sync({force:false}).then(()=>{
     console.log('Error occurd during model syncronizeation :',error);
 })
 
+//  add user
+app.post('/users',async(req,res)=>{
+    const {name,email}=req.body;
+    const newUser=await User.create({name,email});
+    res.json(newUser);
+});
