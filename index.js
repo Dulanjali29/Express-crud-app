@@ -25,3 +25,9 @@ app.post('/users',async(req,res)=>{
     const newUser=await User.create({name,email});
     res.json(newUser);
 });
+
+//   get all users
+app.get('/users',async(req,res)=>{
+    const users=await User.findAll();
+    res.json(users);
+});
