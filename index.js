@@ -31,3 +31,18 @@ app.get('/users',async(req,res)=>{
     const users=await User.findAll();
     res.json(users);
 });
+
+//   update user by id
+app.put('/users/:id',async(req,res)=>{
+    const {name,email}=req.body;
+    const user=await User.findByPk(req.params.id);
+    if(user){
+        user.name=name;
+        user.email=email;
+        await user.save();
+        res.json(user);
+    }else{
+        res.status(404).send('User not dound !');
+    }
+   
+});
